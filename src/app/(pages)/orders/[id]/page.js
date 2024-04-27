@@ -52,7 +52,7 @@ export default function OrderPage() {
                     <div className="grid md:grid-cols-2 gap-16">
                         <div>
                             {order.cartProducts.map(product => (
-                                <CartProduct product={product} />
+                                <CartProduct key={product._id} product={product} />
                             ))}
                             <div className="text-left my-2 grid grid-cols-2">
                                 <span className="text-gray-500">
@@ -73,7 +73,7 @@ export default function OrderPage() {
                         </div>
                         <div className="bg-gray-100 p-4 rounded-lg">
                             <h2 className="text-center border-b pb-2 mb-2 font-semibold">آدرس ارسالی</h2>
-                            <AddressInputs addressProps={...order} disabled={true}/>
+                            <AddressInputs addressProps={order} disabled={true}/>
                         </div>
                     </div>
                 )
