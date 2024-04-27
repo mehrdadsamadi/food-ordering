@@ -1,7 +1,15 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Vazirmatn } from "next/font/google"
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
+import Header from "@/components/layout/Header";
+import Heart from "@/components/icons/heart";
+import AppProviders from "@/components/AppProviders";
+import { Toaster } from "react-hot-toast";
+
+const vazir = Vazirmatn({
+  subsets: ["arabic", "latin"],
+  display: "swap"
+})
 
 export const metadata = {
   title: "Create Next App",
@@ -9,9 +17,23 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="fa-IR" dir="rtl" className={`${vazir.className} scroll-smooth`}>
+      <body className={vazir.className}>
+        <main className="max-w-4xl mx-auto p-4">
+          <AppProviders>
+            <Toaster position="bottom-center"/>
+            <Header />
+            {children}
+            <footer className="border-t p-8 text-center mt-16">
+              <div className="flex justify-center">
+                &copy; توسعه یافته با <Heart className="w-6 h-6 text-primary mx-1" /> در <span className="text-primary mr-1">1403</span>
+              </div>
+            </footer>
+          </AppProviders>
+        </main>
+      </body>
     </html>
   );
 }
